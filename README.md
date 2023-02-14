@@ -1,5 +1,5 @@
-<img align="middle" width="200" alt="final result" src="https://github.com/SrimanPolusani/logistic_regression/blob/master/decision_curve.png?raw=true">
-<img align="middle" width="200" alt="sigmoid graph" src="https://github.com/SrimanPolusani/logistic_regression/blob/master/sigmoid_graph.png?raw=true">
+<img align="middle" width="200" alt="final result" src="https://github.com/SrimanPolusani/logistic_regression/blob/master/decision_curve.png?raw=true"> <img align="middle" width="200" alt="sigmoid graph" src="https://github.com/SrimanPolusani/logistic_regression/blob/master/sigmoid_graph.png?raw=true">
+
 ![alt-text-1](decision_curve.png "title-1") ![alt-text-2](sigmoid_graph.png "title-2")
 
 <h1>logistic_regression</h1>
