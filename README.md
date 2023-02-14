@@ -1,6 +1,4 @@
 <img align="left" width="250" alt="sigmoid graph" src="https://github.com/SrimanPolusani/logistic_regression/blob/master/sigmoid_graph.png?raw=true">
-<img align="middle" width="350" alt="xi vs ytrain" src="https://github.com/SrimanPolusani/logistic_regression/blob/master/xtrain_vs_ytrain.png?raw=true">
-<br>
 <img align="middle" width="250" alt="final result" src="https://github.com/SrimanPolusani/logistic_regression/blob/master/decision_curve.png?raw=true">
 
 <h1>logistic_regression</h1>
