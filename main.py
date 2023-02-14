@@ -66,9 +66,10 @@ class LogisticRegression:
             self.w = self.w - (self.learning_rate * w_gradient)
             self.b = self.b - (self.learning_rate * b_gradient)
 
-            if iter_num < 100_000:
+            if iter_num < 100_000:  # To save resources
                 self.j_history[self.compute_cost_logistic()] = [self.w, self.b]
 
+            # To print w, b and cost 10 times in a gradient descent, irrespective of total number of iterations
             if iter_num % math.ceil(self.total_iters / 10) == 0:
                 print('w: {}\nb: {}'.format(self.w, self.b))
                 print('Iteration number: {}, Cost: {}\n'.format(iter_num, list(self.j_history.keys())[-1]))
@@ -104,7 +105,7 @@ class LogisticRegression:
         axes.scatter(self.X_train[self.pos][0:, 0], self.X_train[self.pos][0:, 1], marker='x', s=100, c='red', lw=3)
         axes.scatter(self.X_train[self.neg][0:, 0], self.X_train[self.neg][0:, 1], marker='o', s=80, facecolors='none',
                      edgecolors='blue', lw=3)
-        axes.plot([0, -self.b/self.w[0]], [-self.b/self.w[1], 0], color='#1AA7EC', lw=2)
+        axes.plot([0, -self.b / self.w[0]], [-self.b / self.w[1], 0], color='#1AA7EC', lw=2)
         axes.set_title('$X_0$ ' + 'Vs ' + '$X_1$', fontsize=20)
         axes.axis([0, 3.5, 0, 3.0])
         axes.set_xlabel('$X_0$', fontsize=14)
