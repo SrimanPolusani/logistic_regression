@@ -21,6 +21,9 @@ class LogisticRegression:
         self.total_iters = num_iters
         self.reg_param = lambda_
 
+        # Zscore normalization, Formula: X_norm = X_train-mean/sigma
+        self.X_train = (self.X_train - np.mean(self.X_train, axis=0)) / np.std(self.X_train, axis=0)
+
         # Generate initial params
         np.random.seed(1)
         self.w = np.random.randn(self.n_features)
@@ -113,13 +116,27 @@ class LogisticRegression:
             axis.set_ylabel('Y_train')
         plt.show()
 
+    def decision_points(self):
+        x1, y1 = 0, -self.b / self.w[0]
+        x2, y2 = -self.b / self.w[1], 0
+        a, b = y1 - y2, x2 - x1
+        c = x1 * y2 - x2 * y1
+
+        x1 = self.X_train[0:, 0].max()
+        y1 = (-a * x1 - c) / b
+        y2 = self.X_train[0:, 1].max()
+        x2 = (-b * y2 + c) / a
+
+        return (x1, y1), (x2, y2)
+
     # <-----Xo Vs X1 Graph and Decision Curve----->
     def visualize_result(self):
+        p1, p2 = self.decision_curve()
         fig, axes = plt.subplots(1, 1, figsize=(7, 6))
         axes.scatter(self.X_train[self.pos][0:, 0], self.X_train[self.pos][0:, 1], marker='x', s=100, c='red', lw=3)
         axes.scatter(self.X_train[self.neg][0:, 0], self.X_train[self.neg][0:, 1], marker='o', s=80, facecolors='none',
                      edgecolors='blue', lw=3)
-        axes.plot([0, -self.b / self.w[0]], [-self.b / self.w[1], 0], color='#1AA7EC', lw=2)
+        axes.plot([p1[0], p1[1]], [p2[0], p2[1]], color='#1AA7EC', lw=2)
         axes.set_title('$X_0$ ' + 'Vs ' + '$X_1$', fontsize=20)
         axes.set_xlabel('$X_0$', fontsize=14)
         axes.set_ylabel('$X_1$', fontsize=14)
@@ -127,8 +144,8 @@ class LogisticRegression:
 
 
 alph = 0.001
-iters = 100_000
-lambda_value = 10
+iters = 50_000
+lambda_value = 0.1
 
 # Instance of the object
 ml_object = LogisticRegression('data1.txt', alph, iters, lambda_value)
