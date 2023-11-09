@@ -89,7 +89,9 @@ class LogisticRegression:
             # To print w, b and cost 10 times in a gradient descent, irrespective of total number of iterations
             if iter_num % math.ceil(self.total_iters / 10) == 0:
                 print('w: {}\nb: {}'.format(self.w, self.b))
-                print('Iteration number: {}, Cost: {}\n'.format(iter_num, list(self.j_history.keys())[-1]))
+                print(
+                    'Iteration number: {}, Cost: {}\n'.format(iter_num, list(self.j_history.keys())[-1])
+                )
         return self.w, self.b, self.j_history
 
     # <-----z Vs g(z) Sigmoid Graph----->
@@ -107,9 +109,14 @@ class LogisticRegression:
         for axis_num, axis in enumerate(axes):
             x_data_pos = self.X_train[self.pos][0:, [axis_num]]
             x_data_neg = self.X_train[self.neg][0:, [axis_num]]
-            axis.scatter(x_data_pos, self.y_train[self.pos], marker='x', s=80, c='red', label='y=1', lw=1)
-            axis.scatter(x_data_neg, self.y_train[self.neg], marker='o', s=100, facecolors='none', edgecolors='blue',
-                         lw=1)
+            axis.scatter(
+                x_data_pos, self.y_train[self.pos],
+                marker='x', s=80, c='red', label='y=1', lw=1
+            )
+            axis.scatter(
+                x_data_neg, self.y_train[self.neg],
+                marker='o', s=100, facecolors='none', edgecolors='blue',lw=1
+            )
             axis.set_title(f'$X_{axis_num}$ Vs Y_train')
             axis.set_ylim(-0.08, 1.1)
             axis.set_xlabel(f'$X_{axis_num}$')
@@ -133,9 +140,14 @@ class LogisticRegression:
     def visualize_result(self):
         p1, p2 = self.decision_curve()
         fig, axes = plt.subplots(1, 1, figsize=(7, 6))
-        axes.scatter(self.X_train[self.pos][0:, 0], self.X_train[self.pos][0:, 1], marker='x', s=100, c='red', lw=3)
-        axes.scatter(self.X_train[self.neg][0:, 0], self.X_train[self.neg][0:, 1], marker='o', s=80, facecolors='none',
-                     edgecolors='blue', lw=3)
+        axes.scatter(
+            self.X_train[self.pos][0:, 0], self.X_train[self.pos][0:, 1],
+            marker='x', s=100, c='red', lw=3
+        )
+        axes.scatter(
+            self.X_train[self.neg][0:, 0], self.X_train[self.neg][0:, 1],
+            marker='o', s=80, facecolors='none', edgecolors='blue', lw=3
+        )
         axes.plot([p1[0], p1[1]], [p2[0], p2[1]], color='#1AA7EC', lw=2)
         axes.set_title('$X_0$ ' + 'Vs ' + '$X_1$', fontsize=20)
         axes.set_xlabel('$X_0$', fontsize=14)
