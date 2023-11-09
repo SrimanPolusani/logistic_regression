@@ -86,7 +86,7 @@ class LogisticRegression:
             if iter_num < 100_000:  # To save resources
                 self.j_history[self.compute_cost_logistic()] = [self.w, self.b]
 
-            # To print w, b and cost 10 times in a gradient descent, irrespective of total number of iterations
+            # To print w, b and cost 10 times in a gradient descent, irrespective of total no. of iterations
             if iter_num % math.ceil(self.total_iters / 10) == 0:
                 print('w: {}\nb: {}'.format(self.w, self.b))
                 print(
