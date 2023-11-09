@@ -116,7 +116,7 @@ class LogisticRegression:
             axis.set_ylabel('Y_train')
         plt.show()
 
-    def decision_points(self):
+    def decision_curve(self):
         x1, y1 = 0, -self.b / self.w[0]
         x2, y2 = -self.b / self.w[1], 0
         a, b = y1 - y2, x2 - x1
@@ -144,7 +144,7 @@ class LogisticRegression:
 
 
 alph = 0.001
-iters = 50_000
+iters = 10_000
 lambda_value = 0.1
 
 # Instance of the object
